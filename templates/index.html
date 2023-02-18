@@ -1,0 +1,27 @@
+{% extends 'base.html' %} {% block title %} Cupcake {% endblock %} {% block
+content %}
+<div class="container-md">
+  <h1 class="display-2 text-center">Create a Cupcake</h1>
+  <div class="container">
+    <form class="form-control border-0">
+      {{ form.hidden_tag() }} {% for field in form if
+      field.widget.input_type!='hidden' %}
+      <p>
+        {{ field.label(class_='form-label') }} {{ field(class_='form-control')}}
+        {% for error in field.errors %} <span><small>{{error}}</small></span
+        >{% endfor %}
+      </p>
+      {% endfor %}
+      <div class="d-flex justify-content-end">
+        <button class="btn btn-success m-1 add-btn">Add Cupcake</button>
+      </div>
+    </form>
+  </div>
+  <div class="container">
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-primary m-1 get-cupcakes">View Cupcakes</button>
+    </div>
+    <ul id="cupcake-list"></ul>
+  </div>
+</div>
+{% endblock %}
